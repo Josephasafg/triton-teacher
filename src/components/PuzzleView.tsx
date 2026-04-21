@@ -156,7 +156,7 @@ export function PuzzleView() {
         <div className="flex w-[58%] flex-col overflow-hidden p-5">
           <div className="mb-3 flex items-baseline justify-between">
             <div className="eyebrow">Your Attempt</div>
-            <span className="font-ital text-[12px] italic text-parchment-mute">
+            <span className="font-sans text-[11px] text-parchment-mute">
               Running the kernel executes the tests below.
             </span>
           </div>

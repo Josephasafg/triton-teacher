@@ -30,8 +30,8 @@ export function Sidebar() {
           <br />
           <span className="font-ital text-[28px] font-normal text-gold">Academy</span>
         </h1>
-        <p className="mt-3 font-sans text-[10.5px] uppercase tracking-widest-caps text-copper/80">
-          A Triton Field Guide
+        <p className="mt-3 font-sans text-[10px] uppercase tracking-caps text-copper/80">
+          Triton for the Curious Engineer
         </p>
       </Link>
 

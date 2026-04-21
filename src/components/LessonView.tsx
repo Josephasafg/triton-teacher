@@ -160,11 +160,8 @@ export function LessonView() {
 
         {/* Code lab column */}
         <div className="w-[45%] overflow-hidden p-5">
-          <div className="mb-3 flex items-baseline justify-between">
+          <div className="mb-3">
             <div className="eyebrow">The Laboratory</div>
-            <span className="font-ital text-[12px] italic text-parchment-mute">
-              Worked specimen
-            </span>
           </div>
           <div className="h-[calc(100%-32px)]">
             <CodePlayground
