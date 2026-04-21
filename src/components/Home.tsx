@@ -21,17 +21,17 @@ export function Home() {
   return (
     <div className="min-h-screen">
       {/* Masthead hero */}
-      <section className="relative border-b border-wine-glow/40 px-12 pb-24 pt-24">
+      <section className="relative border-b border-wine-glow/40 px-6 pb-16 pt-16 md:px-10 md:pb-20 md:pt-20 lg:px-12 lg:pb-24 lg:pt-24">
         {/* Top meta bar */}
-        <div className="mx-auto mb-20 flex max-w-[1100px] items-center justify-between">
+        <div className="mx-auto mb-10 flex max-w-[1100px] flex-wrap items-center justify-between gap-3 md:mb-20">
           <div className="eyebrow">Vol. I &nbsp;·&nbsp; MMXXVI</div>
-          <div className="eyebrow">Written for the curious engineer</div>
+          <div className="eyebrow hidden md:block">Written for the curious engineer</div>
         </div>
 
         <div className="mx-auto max-w-[1100px]">
           {/* Hero title */}
           <h1
-            className="font-display text-[96px] font-semibold leading-[0.92] text-parchment-ink sm:text-[120px] lg:text-[150px]"
+            className="font-display text-[56px] font-semibold leading-[0.92] text-parchment-ink sm:text-[80px] md:text-[104px] lg:text-[150px]"
             style={{
               fontVariationSettings: "'opsz' 144, 'SOFT' 100",
               letterSpacing: '-0.02em',
@@ -43,8 +43,8 @@ export function Home() {
             <span className="text-copper">.</span>
           </h1>
 
-          <div className="mt-10 grid grid-cols-12 gap-x-8">
-            <div className="col-span-12 md:col-span-4">
+          <div className="mt-8 grid grid-cols-1 gap-y-8 md:mt-10 md:grid-cols-12 md:gap-x-8">
+            <div className="md:col-span-4">
               <div className="eyebrow mb-3">The Subject</div>
               <p className="font-display text-[15px] leading-relaxed text-parchment/80">
                 A field guide to writing GPU kernels in OpenAI&rsquo;s{' '}
@@ -53,7 +53,7 @@ export function Home() {
               </p>
             </div>
 
-            <div className="col-span-12 md:col-span-4 md:col-start-6">
+            <div className="md:col-span-4 md:col-start-6">
               <div className="eyebrow mb-3">The Method</div>
               <p className="font-display text-[15px] leading-relaxed text-parchment/80">
                 Seven chapters, forty-odd lessons, a handful of puzzles, and a laboratory
@@ -62,7 +62,7 @@ export function Home() {
               </p>
             </div>
 
-            <div className="col-span-12 md:col-span-3 md:col-start-10">
+            <div className="md:col-span-3 md:col-start-10">
               <div className="eyebrow mb-3">Begin</div>
               <button
                 onClick={() => {
@@ -71,8 +71,8 @@ export function Home() {
                     navigate(`/module/${first.id}/lesson/${first.lessons[0].id}`);
                   }
                 }}
-                className="group flex items-baseline gap-3 font-display text-[28px] font-semibold
-                           text-parchment transition-colors hover:text-gold"
+                className="group flex items-baseline gap-3 font-display text-[24px] font-semibold
+                           text-parchment transition-colors hover:text-gold md:text-[28px]"
                 style={{ fontVariationSettings: "'opsz' 36, 'SOFT' 80" }}
               >
                 <span className="font-ital text-[22px] font-normal italic text-copper
@@ -86,11 +86,11 @@ export function Home() {
         </div>
 
         {/* Counts line */}
-        <div className="mx-auto mt-24 max-w-[1100px]">
+        <div className="mx-auto mt-16 max-w-[1100px] md:mt-24">
           <div className="rule-ornate mb-6">
             <span className="font-ital text-[14px] italic">◆</span>
           </div>
-          <div className="flex flex-wrap justify-center gap-x-12 gap-y-3 font-display text-[13px] text-parchment-dim">
+          <div className="flex flex-wrap justify-center gap-x-8 gap-y-3 font-display text-[13px] text-parchment-dim md:gap-x-12">
             <Stat label="Chapters" value={curriculum.length} />
             <Stat label="Lessons" value={totalLessons} />
             <Stat label="Puzzles" value={totalPuzzles} />
@@ -100,16 +100,16 @@ export function Home() {
       </section>
 
       {/* Table of contents */}
-      <section className="relative px-12 py-24">
+      <section className="relative px-6 py-16 md:px-10 md:py-20 lg:px-12 lg:py-24">
         <div className="mx-auto max-w-[1100px]">
-          <div className="mb-3 flex items-baseline justify-between">
-            <h2 className="font-display text-[56px] font-semibold leading-none text-parchment-ink"
+          <div className="mb-3 flex flex-wrap items-baseline justify-between gap-2">
+            <h2 className="font-display text-[40px] font-semibold leading-none text-parchment-ink md:text-[48px] lg:text-[56px]"
                 style={{ fontVariationSettings: "'opsz' 72, 'SOFT' 100", letterSpacing: '-0.015em' }}>
               Contents<span className="text-copper">.</span>
             </h2>
             <div className="eyebrow">In {toRoman(curriculum.length)} Parts</div>
           </div>
-          <div className="mb-14 h-px w-full bg-gradient-to-r from-copper via-wine-glow to-transparent" />
+          <div className="mb-10 h-px w-full bg-gradient-to-r from-copper via-wine-glow to-transparent md:mb-14" />
 
           <ol className="space-y-0">
             {curriculum.map((mod, idx) => {
@@ -122,13 +122,13 @@ export function Home() {
                     onClick={() =>
                       navigate(`/module/${mod.id}/lesson/${mod.lessons[0]?.id}`)
                     }
-                    className="group grid w-full grid-cols-12 items-start gap-6 border-t border-wine-glow/30
-                               py-9 text-left transition-colors hover:bg-wine-glow/[0.08] last:border-b"
+                    className="group grid w-full grid-cols-12 items-start gap-x-4 gap-y-3 border-t border-wine-glow/30
+                               py-7 text-left transition-colors hover:bg-wine-glow/[0.08] last:border-b md:gap-6 md:py-9"
                   >
                     {/* Roman numeral */}
                     <div className="col-span-2 md:col-span-1">
-                      <div className="font-display text-[44px] font-medium leading-none text-copper
-                                      transition-colors group-hover:text-gold"
+                      <div className="font-display text-[32px] font-medium leading-none text-copper
+                                      transition-colors group-hover:text-gold md:text-[44px]"
                            style={{ fontVariationSettings: "'opsz' 72, 'SOFT' 20" }}>
                         {toRoman(idx + 1)}
                       </div>
@@ -136,18 +136,18 @@ export function Home() {
 
                     {/* Title & description */}
                     <div className="col-span-10 md:col-span-6">
-                      <h3 className="font-display text-[28px] font-semibold leading-[1.1] text-parchment-ink
-                                     transition-colors group-hover:text-gold"
+                      <h3 className="font-display text-[22px] font-semibold leading-[1.1] text-parchment-ink
+                                     transition-colors group-hover:text-gold md:text-[28px]"
                           style={{ fontVariationSettings: "'opsz' 36, 'SOFT' 80", letterSpacing: '-0.01em' }}>
                         {mod.title}
                       </h3>
-                      <p className="mt-2 max-w-md font-display text-[14.5px] leading-relaxed text-parchment/70">
+                      <p className="mt-2 max-w-md font-display text-[14px] leading-relaxed text-parchment/70 md:text-[14.5px]">
                         {mod.description}
                       </p>
                     </div>
 
                     {/* Meta */}
-                    <div className="col-span-6 md:col-span-3 md:pt-2">
+                    <div className="col-span-7 col-start-3 md:col-span-3 md:col-start-auto md:pt-2">
                       <div className="space-y-1.5 font-sans text-[11px] text-parchment-dim">
                         <div className="flex items-baseline gap-2">
                           <span className="uppercase tracking-caps text-parchment-mute">Lessons</span>
@@ -167,7 +167,7 @@ export function Home() {
                     </div>
 
                     {/* Difficulty + progress */}
-                    <div className="col-span-6 md:col-span-2 md:pt-2 text-right">
+                    <div className="col-span-3 md:col-span-2 md:pt-2 text-right">
                       <span className={diffClass[mod.difficulty]}>
                         {mod.difficulty}
                       </span>
@@ -192,13 +192,13 @@ export function Home() {
       </section>
 
       {/* Colophon */}
-      <section className="border-t border-wine-glow/40 px-12 py-16">
+      <section className="border-t border-wine-glow/40 px-6 py-12 md:px-10 md:py-14 lg:px-12 lg:py-16">
         <div className="mx-auto max-w-[1100px]">
-          <div className="grid grid-cols-12 gap-x-8">
-            <div className="col-span-12 md:col-span-3">
+          <div className="grid grid-cols-1 gap-y-4 md:grid-cols-12 md:gap-x-8">
+            <div className="md:col-span-3">
               <div className="eyebrow mb-3">Colophon</div>
             </div>
-            <div className="col-span-12 md:col-span-9 font-display text-[15px] leading-relaxed text-parchment/75">
+            <div className="font-display text-[15px] leading-relaxed text-parchment/75 md:col-span-9">
               <p>
                 Set in <em className="italic">Fraunces</em> and{' '}
                 <em className="italic">Instrument Serif</em>, with code

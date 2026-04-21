@@ -50,22 +50,22 @@ export function PuzzleView() {
   const cleanTitle = puzzle.title.replace(/^Puzzle:\s*/, '');
 
   return (
-    <div className="flex h-full flex-col">
-      <header className="flex items-center justify-between border-b border-wine-glow/40 bg-wine-deep/40 px-10 py-4">
-        <div className="flex items-baseline gap-4 font-sans text-[10.5px] uppercase tracking-widest-caps text-parchment-mute">
-          <button onClick={() => navigate('/')} className="hover:text-parchment">
-            Kernel Academy
+    <div className="flex min-h-full flex-col lg:h-full">
+      <header className="flex items-center justify-between gap-3 border-b border-wine-glow/40 bg-wine-deep/40 py-3 pl-16 pr-4 md:px-8 md:py-4 lg:pl-10">
+        <div className="flex min-w-0 items-baseline gap-2 font-sans text-[10.5px] uppercase tracking-widest-caps text-parchment-mute md:gap-4">
+          <button onClick={() => navigate('/')} className="shrink-0 hover:text-parchment">
+            Home
           </button>
           <span className="text-copper">◆</span>
-          <span>
-            Ch. {toRoman(modIdx + 1)} &nbsp;·&nbsp;{' '}
+          <span className="min-w-0 truncate">
+            <span className="hidden sm:inline">Ch. {toRoman(modIdx + 1)} &nbsp;·&nbsp;{' '}</span>
             <span className="font-serif normal-case tracking-normal text-parchment-dim">
               {mod.title}
             </span>
           </span>
         </div>
 
-        <div className="flex items-center gap-4">
+        <div className="flex shrink-0 items-center gap-3">
           <span className={`diff-pill ${diffTint[puzzle.difficulty]}`}>
             {puzzle.difficulty}
           </span>
@@ -77,14 +77,14 @@ export function PuzzleView() {
         </div>
       </header>
 
-      <div className="flex flex-1 min-h-0">
+      <div className="flex min-h-0 flex-1 flex-col lg:flex-row">
         {/* Problem column */}
-        <div className="w-[42%] overflow-y-auto border-r border-wine-glow/40">
-          <div className="mx-auto max-w-[520px] px-12 py-14">
+        <div className="w-full border-b border-wine-glow/40 lg:w-[42%] lg:overflow-y-auto lg:border-b-0 lg:border-r">
+          <div className="mx-auto max-w-[520px] px-6 py-10 md:px-10 md:py-12 lg:px-12 lg:py-14">
             <div className="eyebrow mb-4">
               Exercise {toRoman(puzzleIdx + 1)}
             </div>
-            <h1 className="font-display text-[38px] font-semibold leading-[1.08] text-parchment-ink"
+            <h1 className="font-display text-[30px] font-semibold leading-[1.08] text-parchment-ink md:text-[34px] lg:text-[38px]"
                 style={{ fontVariationSettings: "'opsz' 48, 'SOFT' 100", letterSpacing: '-0.015em' }}>
               {cleanTitle}
             </h1>
@@ -153,14 +153,14 @@ export function PuzzleView() {
         </div>
 
         {/* Code lab */}
-        <div className="flex w-[58%] flex-col overflow-hidden p-5">
-          <div className="mb-3 flex items-baseline justify-between">
+        <div className="flex w-full flex-col p-4 md:p-5 lg:w-[58%] lg:overflow-hidden">
+          <div className="mb-3 flex flex-wrap items-baseline justify-between gap-2">
             <div className="eyebrow">Your Attempt</div>
-            <span className="font-sans text-[11px] text-parchment-mute">
+            <span className="hidden font-sans text-[11px] text-parchment-mute sm:inline">
               Running the kernel executes the tests below.
             </span>
           </div>
-          <div className="flex-1 min-h-0">
+          <div className="h-[500px] lg:h-auto lg:flex-1 lg:min-h-0">
             <CodePlayground
               key={puzzle.id}
               initialCode={puzzle.starterCode}
@@ -174,12 +174,12 @@ export function PuzzleView() {
 
       {/* Solved banner */}
       {(solved || alreadySolved) && (
-        <div className="border-t border-sage/30 bg-sage/[0.08] px-10 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-baseline gap-3 font-display text-[16px] text-sage">
+        <div className="border-t border-sage/30 bg-sage/[0.08] px-6 py-4 md:px-10">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <div className="flex items-baseline gap-3 font-display text-[15px] text-sage md:text-[16px]">
               <span className="font-ital italic text-[18px]">◆</span>
               <em className="italic">Quod erat demonstrandum.</em>
-              <span className="text-parchment-dim">The exercise is solved.</span>
+              <span className="hidden text-parchment-dim sm:inline">The exercise is solved.</span>
             </div>
             {nextPuzzle ? (
               <button

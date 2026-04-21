@@ -6,21 +6,21 @@ export function About() {
   return (
     <div className="min-h-screen">
       {/* Running head */}
-      <header className="flex items-center justify-between border-b border-wine-glow/40 bg-wine-deep/40 px-10 py-4">
-        <div className="flex items-baseline gap-4 font-sans text-[10.5px] uppercase tracking-widest-caps text-parchment-mute">
-          <button onClick={() => navigate('/')} className="hover:text-parchment">
-            Kernel Academy
+      <header className="flex items-center justify-between gap-3 border-b border-wine-glow/40 bg-wine-deep/40 py-3 pl-16 pr-4 md:px-8 md:py-4 lg:pl-10">
+        <div className="flex min-w-0 items-baseline gap-2 font-sans text-[10.5px] uppercase tracking-widest-caps text-parchment-mute md:gap-4">
+          <button onClick={() => navigate('/')} className="shrink-0 hover:text-parchment">
+            Home
           </button>
           <span className="text-copper">◆</span>
-          <span>About the Author</span>
+          <span className="truncate">About the Author</span>
         </div>
       </header>
 
-      <article className="mx-auto max-w-[760px] px-12 py-20">
+      <article className="mx-auto max-w-[760px] px-6 py-12 md:px-10 md:py-16 lg:px-12 lg:py-20">
         <div className="eyebrow mb-5">§ Biographical Note</div>
 
         <h1
-          className="font-display text-[80px] font-semibold leading-[0.95] text-parchment-ink"
+          className="font-display text-[52px] font-semibold leading-[0.95] text-parchment-ink sm:text-[64px] md:text-[72px] lg:text-[80px]"
           style={{
             fontVariationSettings: "'opsz' 144, 'SOFT' 100",
             letterSpacing: '-0.02em',
@@ -30,7 +30,7 @@ export function About() {
           <span className="text-copper">?</span>
         </h1>
 
-        <p className="mt-6 font-ital text-[22px] italic leading-snug text-parchment-dim">
+        <p className="mt-6 font-ital text-[18px] italic leading-snug text-parchment-dim md:text-[22px]">
           A short note from the person who wrote this field guide.
         </p>
 
