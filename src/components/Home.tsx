@@ -191,26 +191,6 @@ export function Home() {
         </div>
       </section>
 
-      {/* Colophon */}
-      <section className="border-t border-wine-glow/40 px-6 py-12 md:px-10 md:py-14 lg:px-12 lg:py-16">
-        <div className="mx-auto max-w-[1100px]">
-          <div className="grid grid-cols-1 gap-y-4 md:grid-cols-12 md:gap-x-8">
-            <div className="md:col-span-3">
-              <div className="eyebrow mb-3">Colophon</div>
-            </div>
-            <div className="font-display text-[15px] leading-relaxed text-parchment/75 md:col-span-9">
-              <p>
-                Set in <em className="italic">Fraunces</em> and{' '}
-                <em className="italic">Instrument Serif</em>, with code
-                specimens in <span className="font-mono text-[13px] text-gold">IBM Plex Mono</span>.
-                Executed in the browser by way of Pyodide &amp; NumPy. Inspired by{' '}
-                <em className="italic">Triton-Puzzles</em> (GPU MODE) and the kernels
-                of <em className="italic">vLLM</em>.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
     </div>
   );
 }
