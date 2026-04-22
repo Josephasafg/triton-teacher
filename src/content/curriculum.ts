@@ -64,6 +64,83 @@ print(f"Next power of 2: triton.next_power_of_2(13) = {triton.next_power_of_2(13
 `,
       },
       {
+        id: 'mod-1-lesson-gpu-primer',
+        title: 'A Short Note on GPUs',
+        content: `## A Short Note on GPUs
+
+Before we write any Triton, a minute on what a GPU actually is. If you're comfortable with this, skip ahead.
+
+### Why GPUs are fast
+
+A CPU has a handful of powerful cores (say, 16) optimized for branchy, sequential code. A GPU has *thousands* of simpler cores optimized to do the **same instruction** on **different data** at the same time. This is the SIMD/SPMD model: one program, many data points.
+
+For operations that look like *"add these million numbers pairwise"*, a GPU is roughly two orders of magnitude faster than a CPU. For operations that look like *"parse this JSON"*, it's not.
+
+Machine learning lives in the first camp. A forward pass through a large language model is billions of floating-point operations arranged in a way that maps almost perfectly to the GPU's strengths: matmuls, element-wise ops, softmaxes, reductions. That's why every modern LLM runs on one.
+
+### The CPU-GPU dance
+
+Your Python code runs on the CPU. Your tensors live in GPU memory. When you call a kernel, you're not calling a Python function; you're:
+
+1. Telling the GPU *"run this code, this many times in parallel"*
+2. Passing it pointers to GPU memory
+3. Waiting for it to finish
+4. Using the result back on the CPU
+
+In Triton, that handoff looks like:
+
+\`\`\`python
+add_kernel[(grid_size,)](x, y, output, n, BLOCK_SIZE=256)
+\`\`\`
+
+The \`[grid]\` part is the launch configuration. \`(grid_size,)\` says *"run this kernel \`grid_size\` independent times in parallel"*. Each instance is called a **program**, and each program handles a different piece of the data.
+
+### CUDA vs Triton
+
+Here's what vector addition looks like in CUDA (skim it; you won't be writing this):
+
+\`\`\`c
+__global__ void add_kernel(float* x, float* y, float* out, int n) {
+    int i = blockIdx.x * blockDim.x + threadIdx.x;
+    if (i < n) out[i] = x[i] + y[i];
+}
+\`\`\`
+
+Each **thread** computes *one* element. You have to think about thread indices, block sizes, warp scheduling, shared memory banks, coalesced loads. CUDA gives you power, but makes you manage every detail.
+
+In Triton, you write:
+
+\`\`\`python
+@triton.jit
+def add_kernel(x_ptr, y_ptr, out_ptr, n, BLOCK_SIZE: tl.constexpr):
+    offs = tl.program_id(0) * BLOCK_SIZE + tl.arange(0, BLOCK_SIZE)
+    mask = offs < n
+    tl.store(out_ptr + offs, tl.load(x_ptr + offs, mask=mask) + tl.load(y_ptr + offs, mask=mask), mask=mask)
+\`\`\`
+
+Each **program** handles a *block* of elements. The Triton compiler figures out the rest: how to map your block to threads, where to stage data, how to coalesce loads. You trade some fine-grained control for a lot less complexity.
+
+This course teaches you to think in blocks, not threads. Next lesson, we'll make that concrete.`,
+        code: `# A quick intuition for what a kernel launch computes
+
+# Say we want to add two vectors of length n, in blocks of BLOCK_SIZE.
+# The number of programs we need to launch is ceil(n / BLOCK_SIZE).
+
+sizes = [100, 1000, 10_000, 100_000, 1_000_000]
+block_size = 256
+
+print(f"{'n':>12} {'block':>8} {'programs':>12}")
+print("-" * 36)
+for n in sizes:
+    programs = -(-n // block_size)  # ceiling division in Python
+    print(f"{n:>12} {block_size:>8} {programs:>12}")
+
+print()
+print("On a real GPU, those programs run in parallel across thousands of cores.")
+print("In this course's simulator, we run them sequentially for learning purposes.")
+`,
+      },
+      {
         id: 'mod-1-lesson-2',
         title: 'The GPU Programming Model',
         content: `## The GPU Programming Model
