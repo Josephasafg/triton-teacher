@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>OG — Kernel Academy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,800;1,9..144,400&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet" />
+    <style>
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      html, body {
+        width: 1200px;
+        height: 630px;
+        background: #280611;
+        color: #f4e8d7;
+        font-family: 'Fraunces', Georgia, serif;
+        overflow: hidden;
+        position: relative;
+      }
+
+      /* Aged-paper grain overlay */
+      body::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.95 0 0 0 0 0.91 0 0 0 0 0.84 0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+        mix-blend-mode: overlay;
+        opacity: 0.8;
+        pointer-events: none;
+      }
+
+      .page {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        padding: 80px 90px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .eyebrow {
+        font-family: 'IBM Plex Sans', sans-serif;
+        font-size: 15px;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.24em;
+        color: #b87333;
+        margin-bottom: 36px;
+      }
+
+      h1 {
+        font-family: 'Fraunces', Georgia, serif;
+        font-weight: 700;
+        font-size: 220px;
+        line-height: 0.88;
+        letter-spacing: -0.025em;
+        color: #f9f2e5;
+        font-variation-settings: "opsz" 144, "SOFT" 100;
+      }
+      h1 .academy {
+        font-family: 'Instrument Serif', Georgia, serif;
+        font-weight: 400;
+        font-style: italic;
+        color: #c9a961;
+      }
+      h1 .dot {
+        color: #b87333;
+      }
+
+      .tagline {
+        margin-top: 44px;
+        font-family: 'Instrument Serif', Georgia, serif;
+        font-style: italic;
+        font-size: 36px;
+        color: #d4c5a9;
+        letter-spacing: 0.005em;
+      }
+
+      .bottom-bar {
+        position: absolute;
+        left: 90px;
+        right: 90px;
+        bottom: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-family: 'IBM Plex Sans', sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 0.22em;
+        font-size: 13px;
+        color: #a89a7f;
+      }
+      .bottom-bar .diamond { color: #b87333; font-style: normal; margin: 0 14px; }
+
+      .top-bar {
+        position: absolute;
+        left: 90px;
+        right: 90px;
+        top: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-family: 'IBM Plex Sans', sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 0.24em;
+        font-size: 13px;
+        color: #b87333;
+        font-weight: 500;
+      }
+
+      .atmosphere {
+        position: absolute;
+        top: -200px;
+        right: -200px;
+        width: 900px;
+        height: 900px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(196, 69, 105, 0.12), rgba(40, 6, 17, 0) 65%);
+        pointer-events: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="atmosphere"></div>
+
+    <div class="top-bar">
+      <span>Vol. I &nbsp;·&nbsp; MMXXVI</span>
+      <span>Written for the curious engineer</span>
+    </div>
+
+    <div class="page">
+      <div class="eyebrow">An interactive guide to OpenAI Triton</div>
+      <h1>
+        Kernel<br /><span class="academy">Academy</span><span class="dot">.</span>
+      </h1>
+      <p class="tagline">Triton for the Curious Engineer.</p>
+    </div>
+
+    <div class="bottom-bar">
+      <span>josephasafg.github.io/kernel-academy</span>
+      <span><span class="diamond">◆</span> No GPU Required</span>
+    </div>
+  </body>
+</html>
