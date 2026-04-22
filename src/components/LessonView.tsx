@@ -19,7 +19,7 @@ export function LessonView() {
     return (
       <div className="flex h-full items-center justify-center">
         <p className="font-display italic text-parchment-mute">
-          The requested lesson could not be found.
+          The requested tutorial could not be found.
         </p>
       </div>
     );
@@ -72,7 +72,7 @@ export function LessonView() {
             <div className="mb-8 md:mb-10">
               <div className="eyebrow mb-4">
                 § {toRoman(modIdx + 1)}.{toRoman(lessonIdx + 1)} &nbsp;·&nbsp;{' '}
-                Lesson {lessonIdx + 1} of {mod.lessons.length}
+                Tutorial {lessonIdx + 1} of {mod.lessons.length}
               </div>
               <h1 className="font-display text-[32px] font-semibold leading-[1.05] text-parchment-ink md:text-[38px] lg:text-[44px]"
                   style={{ fontVariationSettings: "'opsz' 72, 'SOFT' 100", letterSpacing: '-0.015em' }}>

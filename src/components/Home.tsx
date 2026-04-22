@@ -56,7 +56,7 @@ export function Home() {
             <div className="md:col-span-4 md:col-start-6">
               <div className="eyebrow mb-3">The Method</div>
               <p className="font-display text-[15px] leading-relaxed text-parchment/80">
-                Seven chapters, forty-odd lessons, a handful of puzzles, and a laboratory
+                Seven chapters, forty-odd tutorials, a handful of puzzles, and a laboratory
                 in which every kernel you write runs directly in the margin,{' '}
                 <em className="italic">sans</em> graphics card.
               </p>
@@ -92,7 +92,7 @@ export function Home() {
           </div>
           <div className="flex flex-wrap justify-center gap-x-8 gap-y-3 font-display text-[13px] text-parchment-dim md:gap-x-12">
             <Stat label="Chapters" value={curriculum.length} />
-            <Stat label="Lessons" value={totalLessons} />
+            <Stat label="Tutorials" value={totalLessons} />
             <Stat label="Puzzles" value={totalPuzzles} />
             <Stat label="Examinations" value={curriculum.length} />
           </div>
@@ -150,7 +150,7 @@ export function Home() {
                     <div className="col-span-7 col-start-3 md:col-span-3 md:col-start-auto md:pt-2">
                       <div className="space-y-1.5 font-sans text-[11px] text-parchment-dim">
                         <div className="flex items-baseline gap-2">
-                          <span className="uppercase tracking-caps text-parchment-mute">Lessons</span>
+                          <span className="uppercase tracking-caps text-parchment-mute">Tutorials</span>
                           <span className="flex-1 border-b border-dotted border-wine-glow/50" />
                           <span className="font-display text-parchment numeral-lining">
                             {toRoman(mod.lessons.length)}

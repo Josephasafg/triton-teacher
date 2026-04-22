@@ -40,7 +40,7 @@ In Triton, you write a kernel that operates on a **block** of elements at a time
 
 ### How This Simulator Works
 
-In this course, we use a **NumPy-based Triton simulator**. Your code uses the same Triton API, but executes on CPU via NumPy. This means:
+In this guide, we use a **NumPy-based Triton simulator**. Your code uses the same Triton API, but executes on CPU via NumPy. This means:
 
 - Same syntax as real Triton
 - No GPU required
@@ -120,7 +120,7 @@ def add_kernel(x_ptr, y_ptr, out_ptr, n, BLOCK_SIZE: tl.constexpr):
 
 Each **program** handles a *block* of elements. The Triton compiler figures out the rest: how to map your block to threads, where to stage data, how to coalesce loads. You trade some fine-grained control for a lot less complexity.
 
-This course teaches you to think in blocks, not threads. Next lesson, we'll make that concrete.`,
+This guide teaches you to think in blocks, not threads. Next tutorial, we'll make that concrete.`,
         code: `# A quick intuition for what a kernel launch computes
 
 # Say we want to add two vectors of length n, in blocks of BLOCK_SIZE.
@@ -137,7 +137,7 @@ for n in sizes:
 
 print()
 print("On a real GPU, those programs run in parallel across thousands of cores.")
-print("In this course's simulator, we run them sequentially for learning purposes.")
+print("In this guide's simulator, we run them sequentially for learning purposes.")
 `,
       },
       {
@@ -392,7 +392,7 @@ Write a Triton kernel that subtracts one vector from another, element-wise:
 output[i] = x[i] - y[i]
 \`\`\`
 
-The skeleton is almost the vector-add kernel from Lesson 1. You need to:
+The skeleton is almost the vector-add kernel from Tutorial 1. You need to:
 
 1. Get the program ID
 2. Compute block offsets
@@ -811,7 +811,7 @@ print(f"Expected: {expected}")
 print("PASSED")`,
         hints: [
           'The write offsets are contiguous; only the *read* offsets need to change.',
-          'Lesson 1 showed this pattern: multiply offsets by the stride.',
+          'Tutorial 1 showed this pattern: multiply offsets by the stride.',
           'Replace in_offsets = out_offsets with in_offsets = out_offsets * stride.',
         ],
       },
@@ -926,7 +926,7 @@ Used in transformers (BERT, GPT). The approximate version:
 
 In PyTorch, \`F.gelu(x)\` works fine. But if you need \`F.gelu(x * weight + bias)\`, that's 3 separate kernel launches (multiply, add, gelu). A Triton kernel does it in **one launch**, saving memory bandwidth.
 
-This is called **kernel fusion**, the topic of our next lesson.
+This is called **kernel fusion**, the topic of our next tutorial.
 
 Run the example to see all three activations!`,
         code: `import triton
@@ -1156,7 +1156,7 @@ output[i] = GELU(x[i] + bias[i])
 
 This is the fused pattern you'd see after a linear projection in a transformer MLP block. Two memory reads, one write, no intermediate buffer.
 
-Use the approximate GELU from Lesson 1:
+Use the approximate GELU from Tutorial 1:
 
 \`\`\`
 GELU(z) ≈ 0.5 * z * (1 + tanh(sqrt(2/pi) * (z + 0.044715 * z^3)))
@@ -1570,7 +1570,7 @@ For each row of a matrix, find its maximum value and write a single scalar out:
 row_max[r] = max(matrix[r, :])
 \`\`\`
 
-This is the first pass of a numerically-stable softmax. One program handles one row, just like the Block Reductions lesson.
+This is the first pass of a numerically-stable softmax. One program handles one row, just like the Block Reductions tutorial.
 
 Steps:
 
@@ -1981,7 +1981,7 @@ Given two 1D vectors \`a\` of length \`M\` and \`b\` of length \`N\`, write a ke
 C[i, j] = a[i] * b[j]
 \`\`\`
 
-A single program can handle the whole output (assume \`M, N <= BLOCK_SIZE\`). This is your first real use of **broadcasting** with \`[:, None]\` and \`[None, :]\` — the same trick used for 2D offsets in Lesson 1.
+A single program can handle the whole output (assume \`M, N <= BLOCK_SIZE\`). This is your first real use of **broadcasting** with \`[:, None]\` and \`[None, :]\` — the same trick used for 2D offsets in Tutorial 1.
 
 Steps:
 

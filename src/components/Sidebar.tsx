@@ -39,7 +39,7 @@ export function Sidebar() {
       <div className="border-b border-wine-glow/40 px-7 py-5">
         <div className="eyebrow mb-3">Ledger</div>
         <div className="space-y-1.5 font-sans text-[12px]">
-          <LedgerRow label="Lessons" done={completedCount} total={totalLessons} />
+          <LedgerRow label="Tutorials" done={completedCount} total={totalLessons} />
           <LedgerRow label="Puzzles" done={solvedCount} total={totalPuzzles} />
           <LedgerRow label="Examinations" done={quizCount} total={totalQuizzes} />
         </div>
